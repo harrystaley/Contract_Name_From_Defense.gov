@@ -2,6 +2,14 @@
 Produces an excel spreadsheet that contains contract descriptions and other data from the defense.gov website.
 """
 
+__author__ = "Harry Staley"
+__version__ = "0.5"
+__license__ = "MIT"
+__maintainer__ = "Harry Staley"
+__email__ = "harry.a.staley2.civ@army.mil"
+__status__ = "Development"
+
+
 from bs4 import BeautifulSoup
 from selenium import webdriver
 from selenium.webdriver.chrome.service import Service
@@ -12,13 +20,6 @@ import regex as re
 import pandas as pd
 import random
 import string
-
-__author__ = "Harry Staley"
-__version__ = "0.5"
-__license__ = "MIT"
-__maintainer__ = "Harry Staley"
-__email__ = "harry.a.staley2.civ@army.mil"
-__status__ = "Development"
 
 # TODO: Further parsing on multiple-award/IDIQ-type contracts – each IDIQ contract number will be associated with a
 #  single “parent” index number.
