@@ -141,18 +141,12 @@ def parse_contracts_page(url, award_date):
             # search for small business indicator.
             sm_biz_pattern = re.compile(r",\* ")
             sm_biz_search = sm_biz_pattern.search(tag_text)
-            if sm_biz_search:
-                small_business = True
-            else:
-                small_business = False
+            small_business = bool(sm_biz_search)
 
             # Search for women owned small business indicator.
             wo_sm_biz_pattern = re.compile(r",\*\* ")
             wo_sm_biz_search = wo_sm_biz_pattern.search(tag_text)
-            if wo_sm_biz_search:
-                wo_small_business = True
-            else:
-                wo_small_business = False
+            wo_small_business = bool(wo_sm_biz_search)
 
             # pull the description of the contract out from the paragraph.
             description_pattern = re.compile(r"(contract|agreement|award)+.*for (.+?\.)")
