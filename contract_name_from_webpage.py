@@ -40,19 +40,23 @@ def generate_id():
     Generates a psuedo random string for use as an ID in the excel spreadsheet.
 
     :return: generated_id: Psuedo random id with the following schema:
-    (Year)(month)-(2 random upper case letters)(zero padded six digits from 10 to 999999)
+    (Year)(month)-(2 random upper case letters)(zero padded six digits from 10
+    to 999999)
     """
     generated_id = f"{date.today().strftime('%Y%m')}-"
-    generated_id += ''.join(random.choices(population=string.ascii_uppercase, k=2))
+    generated_id += ''.join(random.choices(population=string.ascii_uppercase,
+                                           k=2))
     generated_id += str(random.randint(10, 999999)).zfill(6)
     return generated_id
 
 
 def get_driver():
     """
-    Downloads a chrome web browser driver and it silently for use ready to parse a web page.
+    Downloads a chrome web browser driver and it silently for use ready to parse
+     a web page.
 
-    :return: A chrome web browser driver with the --headless and --disable-gpu options enabled.
+    :return: A chrome web browser driver with the --headless and --disable-gpu
+    options enabled.
     """
     chrome_options = webdriver.ChromeOptions()
     chrome_options.add_argument("--headless")
@@ -64,31 +68,39 @@ def get_driver():
 driver = get_driver()
 
 
-def parse_awards_date_page_to_dict(url="https://www.defense.gov/News/Contracts/"):
+def parse_awards_date_page_to_dict(url="https://www.defense.gov/News/"
+                                       "Contracts/"):
     """
     Parse the page containing a list of URLs for awards on each award_date.
 
-    :param url: The url of the page that you want to parse for contract links and dates.
-    :return: A dictionary of hyperlinks in the form of key=award_date: value=hyperlink.
+    :param url: The url of the page that you want to parse for contract links
+    and dates.
+    :return: A dictionary of hyperlinks in the form of
+    key=award_date: value=hyperlink.
     """
 
     html = render_markup(url)
     soup = BeautifulSoup(markup=html, features="html.parser")
-    pattern = re.compile(r"http://www\.defense\.gov/News/Contracts/Contract/Article/\d+/")
+    pattern = re.compile(r"https://www\.defense\.gov/News/Contracts/Contract/"
+                         r"Article/\d+/")
     anchor_tags = soup.find_all("a", href=pattern)
 
     # Create a dictionary for hyperlinks
     hyperlinks = {}
     for link in anchor_tags:
-        # Get the text displayed on the hyperlink and Strip out extraneous data and return the award_date.
-        publish_date_raw = link.text.title().replace("Contracts For", "").replace(".", "").strip()
+        # Get the text displayed on the hyperlink and Strip out extraneous data
+        # and return the award_date.
+        publish_date_raw = link.text.title().replace("Contracts For", "")\
+                                            .replace(".", "").strip()
         publish_date = publish_date_raw.split()
         month = publish_date[0][:3].title()
         day = "".join(filter(str.isdigit, publish_date[1]))
         year = "".join(filter(str.isdigit, publish_date[2]))
         # convert the award_date format to normalize award_date
-        publish_date = datetime.strptime(f"{month} {day}, {year}", "%b %d, %Y").strftime('%m/%d/%Y')
-        # create a key value pair where the key is the award_date and the value is the link.
+        publish_date = datetime.strptime(f"{month} {day}, {year}", "%b %d, %Y")\
+                               .strftime('%m/%d/%Y')
+        # create a key value pair where the key is the award_date and the value
+        # is the link.
         hyperlinks[publish_date] = link["href"]
     return hyperlinks
 
@@ -114,7 +126,8 @@ def parse_contracts_page(url, award_date):
     """
     Parse the page of contracts for a specific date.
 
-    :param url: The url of the individual page containing the award announcements for a specific date.
+    :param url: The url of the individual page containing the award
+    announcements for a specific date.
     :param award_date: The date of the awards announced on the page.
     :return: a dictionary of the awards on the particular page.
     """
@@ -209,13 +222,16 @@ def parse_contracts_page(url, award_date):
 
 def generate_report(start_dt, end_dt=date.today().strftime('%Y-%m-%d')):
     """
-    :param start_dt: (Required) The start date of the data that you want to parse from the site.
-    :param end_dt: (Optional) The end date of the data that you want to parse if left empty the function will use the
+    :param start_dt: (Required) The start date of the data that you want to
+    parse from the site.
+    :param end_dt: (Optional) The end date of the data that you want to parse if
+    left empty the function will use the
     current date.
     :return: An excel spreadsheet containing the contract data.
     """
     contracts = []
-    start_page = f"https://www.defense.gov/News/Contracts/StartDate/{start_dt}/EndDate/{end_dt}"
+    start_page = f"https://www.defense.gov/News/Contracts/StartDate/" \
+                 f"{start_dt}/EndDate/{end_dt}"
     page_num = 1
     empty_dict = False
     links_dict = {}
@@ -248,7 +264,8 @@ if __name__ == '__main__':
             datetime.strptime(start_date, date_format)
             break
         except ValueError:
-            print("This is the incorrect date string format. It should be YYYY-MM-DD")
+            print("This is the incorrect date string format. It should be "
+                  "YYYY-MM-DD")
     while True:
         end_date = input("(Optional) End Date \"YYYY-MM-DD\": ")
         if end_date == "":
@@ -257,7 +274,8 @@ if __name__ == '__main__':
             datetime.strptime(end_date, date_format)
             break
         except ValueError:
-            print("This is the incorrect date string format. It should be YYYY-MM-DD")
+            print("This is the incorrect date string format. It should be "
+                  "YYYY-MM-DD")
     if end_date == "":
         generate_report(start_dt=start_date)
     else:
