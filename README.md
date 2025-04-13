@@ -1,40 +1,77 @@
 # Contract_Name_From_Defense.gov
 
 ## Project Overview
-This repository contains a Python script designed to automate the process of web scraping and data extraction from the Department of Defense (DoD) contract awards news site. The extracted data, which includes award descriptions, is then outputted into an Excel worksheet. This project is a valuable tool for data scientists and developers who are interested in automating data collection from web pages.
 
-## Setup & Installation
-To run this project, you will need Python 3 installed on your machine. You can download Python 3 from the official website [here](https://www.python.org/downloads/).
+`Contract_Name_From_Defense.gov` is a Python-based tool designed to automate the process of scraping award descriptions from the Department of Defense (DoD) contract awards news site. The script efficiently extracts relevant data and outputs it into an organized Excel worksheet. This project is particularly useful for data scientists, researchers, and developers who require systematic data collection from web pages for analysis and reporting.
 
-Once you have Python 3 installed, clone this repository to your local machine:
-```
-git clone https://github.com/username/Contract_Name_From_Defense.gov.git
-```
-Navigate to the cloned directory:
-```
-cd Contract_Name_From_Defense.gov
-```
-Install the required Python dependencies:
-```
+### Project Structure
+
+The project includes the following files and folders:
+
+- `scraper.py`: The main Python script that performs web scraping.
+- `requirements.txt`: A file listing the necessary Python packages.
+- `output/`: Directory where the Excel worksheets are saved after data extraction.
+- `README.md`: Provides project information and instructions.
+
+## Setup and Installation
+
+### Prerequisites
+
+Before you can run the script, make sure you have Python 3 installed on your machine. You can download it from [python.org](https://www.python.org/downloads/).
+
+### Dependencies
+
+Install all required dependencies by running the following command in your terminal:
+
+```bash
 pip install -r requirements.txt
 ```
+
+This will install packages such as `requests`, `beautifulsoup4`, `pandas`, etc., which are necessary for the script to function correctly.
+
+### Installation
+
+Clone the repository to your local machine:
+
+```bash
+git clone https://github.com/yourusername/Contract_Name_From_Defense.gov.git
+cd Contract_Name_From_Defense.gov
+```
+
 ## Usage
-After setting up the project, you can run the script with the following command:
+
+To run the script, navigate to the repository directory and execute the following command in the terminal:
+
+```bash
+python scraper.py
 ```
-python main.py
-```
-This will start the web scraping process, and the extracted data will be saved in an Excel file in the same directory.
+
+The script will start scraping data from the DoD contract awards news site and output the results into an Excel file located in the `output/` directory.
 
 ## Contribution Guidelines
-We welcome contributions from the community. If you wish to contribute to this project, please follow the steps below:
 
-1. Fork the repository to your own GitHub account.
-2. Clone the project to your machine.
-3. Create a branch on your local machine to make your changes.
-4. Push your branch to your forked repo.
-5. From your forked GitHub repository, create a Pull Request.
+Contributions to `Contract_Name_From_Defense.gov` are welcome! Here are a few ways you can contribute:
 
-Before creating a Pull Request, please ensure your code respects the existing style for consistency.
+- Reporting bugs
+- Suggesting enhancements
+- Adding new features
+- Improving documentation
+
+To contribute:
+
+1. Fork the repository.
+2. Create a new branch (`git checkout -b feature-branch`).
+3. Make your changes.
+4. Commit your changes (`git commit -am 'Add some feature'`).
+5. Push to the branch (`git push origin feature-branch`).
+6. Create a new Pull Request.
+
+Please ensure your code adheres to the existing style so that our review process can be smooth and fast.
 
 ## License
-This project is licensed under the MIT License. For more details, see the [LICENSE](LICENSE) file.
+
+This project is licensed under the MIT License - see the [LICENSE](LICENSE) file for details. This ensures that the software can be freely used, modified, and shared.
+
+--- 
+
+For more information or to report issues, please visit the repository issues page.
