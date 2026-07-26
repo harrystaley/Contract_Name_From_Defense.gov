@@ -1,56 +1,60 @@
 ```markdown
 # Contract_Name_From_Defense.gov
 
-A Python script designed for web scraping and extracting award descriptions from the Department of Defense (DoD) contract awards news site. This tool automates data collection and outputs the gathered information into an Excel worksheet, making it ideal for data scientists and developers interested in streamlining their data wrangling processes.
+## Overview
+
+`Contract_Name_From_Defense.gov` is a Python script designed to automate the process of web scraping contract award information from the U.S. Department of Defense (DoD) website. The script extracts data and organizes it into an Excel file using the `pandas` library, making it ideal for data wrangling tasks and further analysis.
 
 ## Features
 
-- **Web Scraping**: Efficiently extracts award descriptions from the DoD contract awards page.
-- **Data Output**: Outputs extracted data into a structured Excel worksheet using pandas.
-- **Automation**: Automates data collection, reducing manual effort and time.
-- **Versatile**: Suitable for integration into larger data analysis workflows.
+- **Automated Web Scraping**: Efficiently collects contract award data from the DoD website.
+- **Data Extraction to Excel**: Utilizes `pandas` to convert and export the scraped data into an Excel spreadsheet.
+- **Easy Data Manipulation**: Facilitates data wrangling and analysis by providing structured data output.
 
 ## Setup and Installation
 
-1. **Clone the Repository**:
+To set up the project locally, follow these steps:
+
+1. **Clone the repository**:
    ```bash
    git clone https://github.com/your-username/Contract_Name_From_Defense.gov.git
    cd Contract_Name_From_Defense.gov
    ```
 
-2. **Create a Virtual Environment** (optional but recommended):
+2. **Create a virtual environment** (optional but recommended):
    ```bash
    python3 -m venv venv
    source venv/bin/activate  # On Windows use `venv\Scripts\activate`
    ```
 
-3. **Install Dependencies**:
+3. **Install the required dependencies**:
    ```bash
    pip install -r requirements.txt
    ```
 
 ## Usage
 
-1. **Run the Script**:
-   ```bash
-   python scrape_dod_contracts.py
-   ```
+To use the script, run the following command in your terminal:
 
-2. **Output**: The script will generate an Excel file (`contracts.xlsx`) containing the scraped data.
+```bash
+python scrape_contracts.py
+```
+
+This will execute the script and generate an Excel file with the scraped contract data in the project directory.
 
 ## Contribution Guidelines
 
-We welcome contributions! Please follow these guidelines:
+We welcome contributions to enhance the functionality and efficiency of this project. To contribute:
 
-1. Fork the repository and create your branch from `main`.
-2. If you've added code that should be tested, add tests.
-3. Ensure the test suite passes.
-4. Make sure your code lints.
-5. Issue a pull request.
+1. Fork the repository.
+2. Create a new branch (`git checkout -b feature-branch`).
+3. Make your changes and commit them (`git commit -m 'Add some feature'`).
+4. Push to the branch (`git push origin feature-branch`).
+5. Open a Pull Request.
+
+Please ensure your code adheres to the existing style and includes appropriate tests.
 
 ## License
 
-This project is licensed under the MIT License. See the [LICENSE](LICENSE) file for details.
+This project is licensed under the MIT License - see the [LICENSE](LICENSE) file for details.
 ```
-
-This README provides a clear overview, highlights key features, gives setup instructions, usage examples, and outlines contribution guidelines, all while adhering to markdown best practices.
